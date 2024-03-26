@@ -1,0 +1,9 @@
+SELECT
+    FLOOR(PRICE/10000) * 10000  AS PRICE_GROUP,
+    COUNT(*) AS PRODUCTS
+FROM PRODUCT
+GROUP BY PRICE_GROUP
+ORDER BY PRICE_GROUP
+
+-- 'PRICE' 컬럼의 값을 10000으로 나누고
+-- 이를  'FLOOR()' 함수를 이용해서 소수점을 제거 및 10000을 곱하여 값을 산출
