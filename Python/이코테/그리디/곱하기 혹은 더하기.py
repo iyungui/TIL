@@ -32,3 +32,4 @@ for i in range(1, len(data)):
     else:
         result *= num
 print(result)
+
