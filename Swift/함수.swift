@@ -1,13 +1,13 @@
-// MARK: -  tuple
+// // MARK: -  tuple
 
-var person: (name: String, age: Int, height: Double) = ("iyungui", 24, 171.1)
+// var person: (name: String, age: Int, height: Double) = ("iyungui", 24, 171.1)
 
-print(person)
-print(person.0)
-print(person.name)
+// print(person)
+// print(person.0)
+// print(person.name)
 
-typealias PersonTuple = (name: String, age: Int, height: Double)
-let william: PersonTuple = ("will", 12, 158.2)
+// typealias PersonTuple = (name: String, age: Int, height: Double)
+// let william: PersonTuple = ("will", 12, 158.2)
 
 // MARK: - Array
 
