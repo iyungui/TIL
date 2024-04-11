@@ -1,3 +1,4 @@
-# TIL (Today I Learned) - Algorithm Problems Team Note
+# TIL (Today I Learned)
 
-Welcome to my Algorithm Problems Note repository.
+- 오늘 배운 내용을 매일 정리하면서 조금씩 성장하는 자신을 보기.
+- 알고리즘, 문법 공부
