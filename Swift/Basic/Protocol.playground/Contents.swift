@@ -112,3 +112,116 @@ Message.isSendableInstance(myPhoneMessage)  // true
 Message.isSendableInstance(yourPhoneMessage)    // false
 Mail.isSendableInstance(myPhoneMessage) // true
 Mail.isSendableInstance(myMail) // true
+
+
+
+protocol Resettable {
+    mutating func reset()
+}
+
+//class Person: Resettable {
+//    var name: String?
+//    var age: Int?
+//    
+//    func reset() {  // class 에는 mutating 키워드를 제외함
+//        self.name = nil
+//        self.age = nil
+//    }
+//}
+//
+//struct Point: Resettable {
+//    var x: Int = 0
+//    var y: Int = 0
+//    
+//    mutating func reset() {
+//        self.x = 0
+//        self.y = 0
+//    }
+//}
+//
+//enum Direction: Resettable {
+//    case east, west, south, north, unknown
+//    
+//    mutating func reset() {
+//        self = Direction.unknown
+//    }
+//}
+
+
+//protocol Named {
+//    var name: String { get }
+//    
+//    init(name: String)
+//}
+//
+//struct Pet: Named {
+//    var name: String
+//    
+//    init(name: String) {
+//        self.name = name
+//    }
+//}
+//
+//final class Person: Named {
+//    var name: String
+//    
+//    init(name: String) {
+//        self.name = name
+//    }
+//}
+
+//class School {
+//    var name: String
+//    
+//    // School 클래스는 Named 프로토콜을 채택하지 않았지만, Named 프로토콜이 요구하는 이니셜라이저를 구현한 경우.
+//    init(name: String) {
+//        self.name = name
+//    }
+//}
+//
+//class MiddleSchool: School, Named {
+//    // 이렇게 부모 클래스에서 프로토콜이 요구하는 이니셜라이저를 모두 구현한 경우, required 와 override 식별자를 모두 명시하도록 한다
+//    // School 클래스에서 상속받은 init(name: ) 이니셜라이저를 재정의해야 하며, 동시에 Named 프로토콜의 이니셜라이저 요구도 충족시켜줘야 하므로, 모두 표기한다. (override required 도 가능)
+//    required override init(name: String) {
+//        super.init(name: name)
+//    }
+//}
+
+
+protocol Named {
+    var name: String { get }
+    
+    init?(name: String)
+}
+
+struct Animal: Named {
+    var name: String
+    
+    init!(name: String) {
+        self.name = name
+    }
+}
+
+struct Pet: Named {
+    var name: String
+    
+    init(name: String) {
+        self.name = name
+    }
+}
+
+class Person: Named {
+    var name: String
+    
+    required init(name: String) {
+        self.name = name
+    }
+}
+
+class School: Named {
+    var name: String
+    
+    required init?(name: String) {
+        self.name = name
+    }
+}
