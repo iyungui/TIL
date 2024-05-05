@@ -188,11 +188,11 @@ protocol Resettable {
 //}
 
 
-protocol Named {
-    var name: String { get }
-    
-    init?(name: String)
-}
+//protocol Named {
+//    var name: String { get }
+//    
+//    init?(name: String)
+//}
 
 struct Animal: Named {
     var name: String
@@ -210,13 +210,13 @@ struct Pet: Named {
     }
 }
 
-class Person: Named {
-    var name: String
-    
-    required init(name: String) {
-        self.name = name
-    }
-}
+//class Person: Named {
+//    var name: String
+//    
+//    required init(name: String) {
+//        self.name = name
+//    }
+//}
 
 class School: Named {
     var name: String
@@ -225,3 +225,103 @@ class School: Named {
         self.name = name
     }
 }
+
+protocol Readable {
+    func read()
+}
+
+protocol Writeable {
+    func write()
+}
+
+protocol ReadSpeakable: Readable {
+    func speak()
+}
+
+protocol ReadWriteSpeakable: Readable, Writeable {
+    func speak()
+}
+
+//class SomeClass: ReadWriteSpeakable {
+//    func read() {
+//        print("Read")
+//    }
+//    
+//    func write() {
+//        print("Write")
+//    }
+//    
+//    func speak() {
+//        print("Speak")
+//    }
+//}
+
+
+protocol ClassOnlyProtocol: class, Readable, Writeable {
+    
+}
+
+class SomeClass: ClassOnlyProtocol {
+    func read() { }
+    func write() { }
+}
+
+// Non-class type 'SomeStruct' cannot conform to class protocol 'ClassOnlyProtocol'
+//struct SomeStruct: ClassOnlyProtocol {
+//    func read() { }
+//    func write() { }
+//}
+
+
+protocol Named {
+    var name: String { get }
+}
+
+protocol Aged {
+    var age: Int { get }
+}
+
+struct Person: Named, Aged {
+    var name: String
+    var age: Int
+}
+
+class Car: Named {
+    var name: String
+    
+    init(name: String) {
+        self.name = name
+    }
+}
+
+class Truck: Car, Aged {
+    var age: Int
+    
+    init(name: String, age: Int) {
+        self.age = age
+        super.init(name: name)
+    }
+}
+
+func celebrateBirthday(to celebrator: Named & Aged)  {
+    print("Happy birthday \(celebrator.name)!! Now you are \(celebrator.age)")
+}
+
+let iyungui = Person(name: "iyungui", age: 25)
+
+celebrateBirthday(to: iyungui)
+
+let myCar: Car = Car(name: "Genesis Motor")
+//celebrateBirthday(to: myCar)    // Argument type 'Car' does not conform to expected type 'Aged'
+
+// class & protocol 조합에서 class 타입은 한 타입만 조합 가능
+//var someVariable: Car & Truck & Aged // Protocol-constrained type cannot contain class 'Truck' because it already contains class 'Car'
+
+// Car class 의 인스턴스 역할을 수행할 수 있고, Aged 프로토콜을 준수하는 인스턴스만 할당할 수 있다. !!
+var someVariable: Car & Aged
+
+// Truck 인스턴스는 Car 클래스 역할도 할 수 있고, Aged 프로토콜도 준수하므로 할당할 수 있다.
+someVariable = Truck(name: "Truck", age: 5)
+
+
+
