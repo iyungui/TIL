@@ -1,3 +1,4 @@
+import Foundation
 
 // 무언가를 수신받을 수 있는 기능
 protocol Receiveable {
@@ -325,3 +326,106 @@ someVariable = Truck(name: "Truck", age: 5)
 
 
 
+// MARK: - Protocol 확인 및 캐스팅
+
+print(iyungui is Named)
+print(iyungui is Aged)
+
+print(myCar is Named)
+print(myCar is Aged)
+
+
+if let castedInstance: Named = iyungui as? Named {
+    print("\(castedInstance) is Named")
+} // Person is Named
+
+if let castedInstance: Named = myCar as? Named {
+    print("\(castedInstance) is Named")
+    // Car is Named
+}
+
+if let castedInstance: Aged = myCar as? Aged {
+    print("\(castedInstance) is Aged")
+}
+
+
+// MARK: - 프로토콜의 선택적 요구
+@objc protocol Moveable {
+    func walk()
+    @objc optional func fly() // optional 식별자 필요
+}
+
+// objc 속성의 프로토콜을 사용하기 위해 Objective-C 클래스인 NSObject를 상속 받음.
+class Tiger: NSObject, Moveable {
+    func walk() {
+        print("Tiger walks")
+    }
+}
+
+class Bird: NSObject, Moveable {
+    func walk() {
+        print("Bird walks")
+    }
+    
+    func fly() {
+        print("Bird flys")
+    }
+}
+
+let tiger: Tiger = Tiger()
+let bird: Bird = Bird()
+
+tiger.walk()
+bird.walk()
+bird.fly()
+var moveableInstance: Moveable = tiger
+moveableInstance.fly?() // nil
+
+moveableInstance = bird
+moveableInstance.fly?() // Bird flys
+
+
+// MARK: - 프로토콜 변수/ 상수
+
+//protocol Named {
+//    var name: String { get }
+//
+//    init?(name: String)
+//}
+//
+//struct Animal: Named {
+//    var name: String
+//    
+//    init!(name: String) {
+//        self.name = name
+//    }
+//}
+//
+//struct Pet: Named {
+//    var name: String
+//    
+//    init(name: String) {
+//        self.name = name
+//    }
+//}
+//
+//class Person: Named {
+//    var name: String
+//
+//    required init(name: String) {
+//        self.name = name
+//    }
+//}
+//
+//class School: Named {
+//    var name: String
+//    
+//    required init?(name: String) {
+//        self.name = name
+//    }
+//}
+//
+//var someNamed: Named = Animal(name: "Animal")
+//someNamed = Pet(name: "Pet")
+//someNamed = Person(name: "Person")
+//someNamed = School(name: "School")
