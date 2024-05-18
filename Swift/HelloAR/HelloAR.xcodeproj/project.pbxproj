@@ -11,6 +11,8 @@
 		C624DA962BF7883100AB9BD2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C624DA952BF7883100AB9BD2 /* ContentView.swift */; };
 		C624DA982BF7883300AB9BD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C624DA972BF7883300AB9BD2 /* Assets.xcassets */; };
 		C624DA9B2BF7883300AB9BD2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C624DA9A2BF7883300AB9BD2 /* Preview Assets.xcassets */; };
+		C624DABC2BF9081500AB9BD2 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C624DABB2BF9081500AB9BD2 /* Coordinator.swift */; };
+		C624DABE2BF90D4000AB9BD2 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C624DABD2BF90D4000AB9BD2 /* UIColorExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		C624DA952BF7883100AB9BD2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C624DA972BF7883300AB9BD2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C624DA9A2BF7883300AB9BD2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C624DABB2BF9081500AB9BD2 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		C624DABD2BF90D4000AB9BD2 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,8 +57,10 @@
 			children = (
 				C624DA932BF7883100AB9BD2 /* AppDelegate.swift */,
 				C624DA952BF7883100AB9BD2 /* ContentView.swift */,
+				C624DABB2BF9081500AB9BD2 /* Coordinator.swift */,
 				C624DA972BF7883300AB9BD2 /* Assets.xcassets */,
 				C624DA992BF7883300AB9BD2 /* Preview Content */,
+				C624DABD2BF90D4000AB9BD2 /* UIColorExtensions.swift */,
 			);
 			path = HelloAR;
 			sourceTree = "<group>";
@@ -139,6 +145,8 @@
 			files = (
 				C624DA962BF7883100AB9BD2 /* ContentView.swift in Sources */,
 				C624DA942BF7883100AB9BD2 /* AppDelegate.swift in Sources */,
+				C624DABC2BF9081500AB9BD2 /* Coordinator.swift in Sources */,
+				C624DABE2BF90D4000AB9BD2 /* UIColorExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
