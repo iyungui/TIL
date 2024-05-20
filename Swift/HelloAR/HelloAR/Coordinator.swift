@@ -19,9 +19,20 @@ class Coordinator: NSObject, ARSessionDelegate {
         
         let tapLocation = recognizer.location(in: view)
         
-        if let entity = view.entity(at: tapLocation) as? ModelEntity {
-            let material = SimpleMaterial(color: UIColor.random(), isMetallic: true)
-            entity.model?.materials = [material]
+        
+        let results = view.raycast(from: tapLocation, allowing: .estimatedPlane, alignment: .horizontal)
+        
+        if let result = results.first {
+            let anchor = ARAnchor(name: "Plane Anchor", transform: result.worldTransform)
+            view.session.add(anchor: anchor)
+            
+            let modelEntity = ModelEntity(mesh: MeshResource.generateBox(size: 0.3))
+            modelEntity.model?.materials = [SimpleMaterial(color: .blue, isMetallic: true)]
+            
+            let anchorEntity = AnchorEntity(anchor: anchor)
+            anchorEntity.addChild(modelEntity)
+            
+            view.scene.addAnchor(anchorEntity)
         }
     }
 }
