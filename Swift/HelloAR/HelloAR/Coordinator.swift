@@ -26,12 +26,14 @@ class Coordinator: NSObject {
             // AnchorEntity - RealityKit Framework
             
             let anchorEntity = AnchorEntity(raycastResult: result)
-
+            
             let modelEntity = ModelEntity(mesh: MeshResource.generateBox(size: 0.3))
+            modelEntity.generateCollisionShapes(recursive: true)
             modelEntity.model?.materials = [SimpleMaterial(color: .blue, isMetallic: true)]
             anchorEntity.addChild(modelEntity)
             
             view.scene.addAnchor(anchorEntity)
+            view.installGestures(.all, for: modelEntity)
         }
         
     }
