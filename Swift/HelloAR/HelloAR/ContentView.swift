@@ -23,7 +23,6 @@ struct ARViewContainer: UIViewRepresentable {
         let anchor = AnchorEntity(plane: .horizontal)
         
         context.coordinator.view = arView
-        arView.session.delegate = context.coordinator
         
         let box = ModelEntity(mesh: MeshResource.generateBox(size: 0.3), materials: [SimpleMaterial(color: .blue, isMetallic: true)])
         

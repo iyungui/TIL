@@ -9,7 +9,7 @@ import Foundation
 import ARKit
 import RealityKit
 
-class Coordinator: NSObject, ARSessionDelegate {
+class Coordinator: NSObject {
     
     weak var view: ARView?
     
@@ -19,20 +19,20 @@ class Coordinator: NSObject, ARSessionDelegate {
         
         let tapLocation = recognizer.location(in: view)
         
-        
         let results = view.raycast(from: tapLocation, allowing: .estimatedPlane, alignment: .horizontal)
         
         if let result = results.first {
-            let anchor = ARAnchor(name: "Plane Anchor", transform: result.worldTransform)
-            view.session.add(anchor: anchor)
+            // ARAnchor - ARKit Framework
+            // AnchorEntity - RealityKit Framework
             
+            let anchorEntity = AnchorEntity(raycastResult: result)
+
             let modelEntity = ModelEntity(mesh: MeshResource.generateBox(size: 0.3))
             modelEntity.model?.materials = [SimpleMaterial(color: .blue, isMetallic: true)]
-            
-            let anchorEntity = AnchorEntity(anchor: anchor)
             anchorEntity.addChild(modelEntity)
             
             view.scene.addAnchor(anchorEntity)
         }
+        
     }
 }
